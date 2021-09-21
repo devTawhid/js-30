@@ -36,11 +36,26 @@ function polulateList(plates = []){
 }
 
 function toggleDone(e){
+    // wes bos way
+    // if(!e.target.matches('input')) return;
+    // const el = e.target;
+    // const index = el.dataset.index;
+    // items[index].done = !items[index].done;
+    // localStorage.setItem('items', JSON.stringify(items));
+    // populateList(items);
+
+
+    // here this = ul so
+    // this.children = all the current and future "li"
     [...this.children].forEach(li => {
         li.addEventListener('click', e => {
+            // here li is the parent now so spreading the children with ... operator in an array
+            // the selecting the [0] index child who is an input and initialize it in "i"
             let i = [...li.children][0];
             if(i.checked){
+                // here i.dataset.index is coming from data-index=${i} 
                 items[i.dataset.index].done = true;
+                //interacting with localStorage
                 localStorage.setItem('items', JSON.stringify(items));
             }else{
                 items[i.dataset.index].done = false;
