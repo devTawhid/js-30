@@ -8,3 +8,5 @@ let html = bands.map(val => {
 }).join('');
 
 band.innerHTML = html;
+
+// there is something missing here too.
